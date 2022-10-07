@@ -18,6 +18,7 @@ public class MainApp extends javax.swing.JFrame {
     /**
      * Creates new form MainApp
      */
+    //ALTER TABLE the_property ADD CONSTRAINT fk_owner_id FOREIGN KEY (ownerid) REFERENCES propertyowner(id) on UPDATE CASCADE on DELETE CASCADE;
     public MainApp() {
         initComponents();
         appico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconmain.png")));
@@ -31,8 +32,10 @@ public class MainApp extends javax.swing.JFrame {
         propertyi.setBorder(menuBorder);
         owner.setBorder(menuBorder);
         client.setBorder(menuBorder);
+        property.setBorder(menuBorder);
+          txtsale.setBorder(menuBorder);
        // this.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        //property.setBorder(menuBorder);
+         
     }
 
     /**
@@ -54,6 +57,7 @@ public class MainApp extends javax.swing.JFrame {
         property = new javax.swing.JLabel();
         propertyi = new javax.swing.JLabel();
         client = new javax.swing.JLabel();
+        txtsale = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -120,6 +124,9 @@ public class MainApp extends javax.swing.JFrame {
         owner.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         owner.setOpaque(true);
         owner.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ownerMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 ownerMouseEntered(evt);
             }
@@ -135,6 +142,9 @@ public class MainApp extends javax.swing.JFrame {
         property.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         property.setOpaque(true);
         property.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                propertyMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 propertyMouseEntered(evt);
             }
@@ -150,6 +160,9 @@ public class MainApp extends javax.swing.JFrame {
         propertyi.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         propertyi.setOpaque(true);
         propertyi.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                propertyiMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 propertyiMouseEntered(evt);
             }
@@ -165,11 +178,32 @@ public class MainApp extends javax.swing.JFrame {
         client.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         client.setOpaque(true);
         client.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                clientMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 clientMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 clientMouseExited(evt);
+            }
+        });
+
+        txtsale.setBackground(new java.awt.Color(102, 102, 102));
+        txtsale.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 20)); // NOI18N
+        txtsale.setForeground(new java.awt.Color(204, 255, 255));
+        txtsale.setText("         Sale");
+        txtsale.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        txtsale.setOpaque(true);
+        txtsale.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtsaleMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                txtsaleMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                txtsaleMouseExited(evt);
             }
         });
 
@@ -181,6 +215,7 @@ public class MainApp extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(32, 32, 32)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtsale, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(client, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(propertyi, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(owner, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -202,7 +237,9 @@ public class MainApp extends javax.swing.JFrame {
                 .addComponent(owner, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
                 .addComponent(client, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 228, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(txtsale, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 474, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -211,7 +248,7 @@ public class MainApp extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 987, Short.MAX_VALUE))
+                .addGap(0, 1481, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -297,14 +334,69 @@ public class MainApp extends javax.swing.JFrame {
 
     private void propertytMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_propertytMouseClicked
         // TODO add your handling code here:
-          propertytype Propertytypeapp=new propertytype();
-                    //this.setVisible(false);
+                   propertytype Propertytypeapp=new propertytype();
                     Propertytypeapp.setVisible(true);
-                    
                     Propertytypeapp.pack();
                     Propertytypeapp.setLocationRelativeTo(null);
                     Propertytypeapp.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_propertytMouseClicked
+
+    private void ownerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ownerMouseClicked
+        // TODO add your handling code here:
+                    OwnerTy ownertypeapp=new OwnerTy();
+                    ownertypeapp.setVisible(true);
+                    ownertypeapp.pack();
+                    ownertypeapp.setLocationRelativeTo(null);
+                    ownertypeapp.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    }//GEN-LAST:event_ownerMouseClicked
+
+    private void clientMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clientMouseClicked
+        // TODO add your handling code here:
+                    ClientsTy clientstypeapp=new ClientsTy();
+                    clientstypeapp.setVisible(true);
+                    clientstypeapp.pack();
+                    clientstypeapp.setLocationRelativeTo(null);
+                    clientstypeapp.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    }//GEN-LAST:event_clientMouseClicked
+
+    private void propertyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_propertyMouseClicked
+        // TODO add your handling code here:
+                  property propertyapp=new property();
+                    propertyapp.setVisible(true);
+                    propertyapp.pack();
+                    propertyapp.setLocationRelativeTo(null);
+                    propertyapp.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    }//GEN-LAST:event_propertyMouseClicked
+
+    private void propertyiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_propertyiMouseClicked
+        // TODO add your handling code here:
+                    propertyImages propertyimagapp=new propertyImages();
+                    propertyimagapp.setVisible(true);
+                    propertyimagapp.pack();
+                    propertyimagapp.setLocationRelativeTo(null);
+                    propertyimagapp.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); 
+    }//GEN-LAST:event_propertyiMouseClicked
+
+    private void txtsaleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtsaleMouseClicked
+        // TODO add your handling code here:
+         sales salesapp=new sales();
+                    salesapp.setVisible(true);
+                    salesapp.pack();
+                    salesapp.setLocationRelativeTo(null);
+                    salesapp.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); 
+    }//GEN-LAST:event_txtsaleMouseClicked
+
+    private void txtsaleMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtsaleMouseEntered
+        // TODO add your handling code here:
+         txtsale.setBackground(Color.white);
+        txtsale.setForeground(new Color(102,102,102));
+    }//GEN-LAST:event_txtsaleMouseEntered
+
+    private void txtsaleMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtsaleMouseExited
+        // TODO add your handling code here:
+         txtsale.setBackground(new Color(102,102,102));
+        txtsale.setForeground(Color.white);
+    }//GEN-LAST:event_txtsaleMouseExited
 
     /**
      * @param args the command line arguments
@@ -352,5 +444,6 @@ public class MainApp extends javax.swing.JFrame {
     private javax.swing.JLabel property;
     private javax.swing.JLabel propertyi;
     private javax.swing.JLabel propertyt;
+    private javax.swing.JLabel txtsale;
     // End of variables declaration//GEN-END:variables
 }

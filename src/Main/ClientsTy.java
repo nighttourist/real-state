@@ -7,7 +7,6 @@ package Main;
 import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.BorderFactory;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.border.Border;
 import javax.swing.table.DefaultTableModel;
@@ -16,47 +15,45 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Asus
  */
-public class OwnerTy extends javax.swing.JFrame {
+public class ClientsTy extends javax.swing.JFrame {
 
     /**
-     * Creates new form OwnerTy
+     * Creates new form ClientsTy
      */
-    public OwnerTy() {
+    public ClientsTy() {
         initComponents();
-         Border titleBorder=BorderFactory.createMatteBorder(0, 0, 3, 0,new Color(125,125,125));
+         Border titleBorder=BorderFactory.createMatteBorder(0, 0, 3, 0,new Color(235,125,22
+         ));
         titlepanel.setBorder(titleBorder);
         Border buttonBorder=BorderFactory.createMatteBorder(3, 3, 3, 3,new Color(255,255,255));
         txtadd.setBorder(buttonBorder);
         txtremove.setBorder(buttonBorder);
         txtedit.setBorder(buttonBorder);
         txtrefresh.setBorder(buttonBorder);
-         txtownerproperty.setBorder(buttonBorder);
-        filltablebyower();
+         filltablebyclients();
     }
-    
-    
-    public void filltablebyower(){
+     public void filltablebyclients(){
         
-        p_owner owner=new p_owner();
+        p_clients clients=new p_clients();
         
-        ArrayList<p_owner>ownerlist=owner.ownerlist();
+        ArrayList<p_clients>clientlist=clients.clientlist();
         
         String[] colname={"Id","First Name","Last Name","phone","Email","Address"};
         
-        Object[][] row=new Object[ownerlist.size()][6];
+        Object[][] row=new Object[clientlist.size()][6];
         
-        for(int i=0;i<ownerlist.size();i++){
-            row[i][0]=ownerlist.get(i).getid();
-            row[i][1]=ownerlist.get(i).getfname();
-            row[i][2]=ownerlist.get(i).getlname();
-            row[i][3]=ownerlist.get(i).getphone();
-            row[i][4]=ownerlist.get(i).getemail();
-            row[i][5]=ownerlist.get(i).getaddress();
+        for(int i=0;i<clientlist.size();i++){
+            row[i][0]=clientlist.get(i).getid();
+            row[i][1]=clientlist.get(i).getfname();
+            row[i][2]=clientlist.get(i).getlname();
+            row[i][3]=clientlist.get(i).getphone();
+            row[i][4]=clientlist.get(i).getemail();
+            row[i][5]=clientlist.get(i).getaddress();
         }
         DefaultTableModel model=new DefaultTableModel(row,colname);
         jTable1.setModel(model);
         jTable1.setRowHeight(40);
-        jTable1.setSelectionBackground(Color.lightGray);
+        jTable1.setSelectionBackground(new Color(27,150,77));
         jTable1.getColumnModel().getColumn(0).setPreferredWidth(25);
         jTable1.getColumnModel().getColumn(4).setPreferredWidth(100);
         jTable1.getColumnModel().getColumn(5).setPreferredWidth(140);
@@ -93,17 +90,16 @@ public class OwnerTy extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         txtmail = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        txtownerproperty = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(121, 117, 242));
+        jPanel1.setBackground(new java.awt.Color(255, 178, 41));
 
-        titlepanel.setBackground(new java.awt.Color(96, 90, 223));
+        titlepanel.setBackground(new java.awt.Color(246, 145, 16));
 
         jLabel1.setFont(new java.awt.Font("Imprint MT Shadow", 0, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel1.setText("Owner ");
+        jLabel1.setText("Clients");
 
         javax.swing.GroupLayout titlepanelLayout = new javax.swing.GroupLayout(titlepanel);
         titlepanel.setLayout(titlepanelLayout);
@@ -111,7 +107,7 @@ public class OwnerTy extends javax.swing.JFrame {
             titlepanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, titlepanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(366, 366, 366))
         );
         titlepanelLayout.setVerticalGroup(
@@ -215,17 +211,6 @@ public class OwnerTy extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 18)); // NOI18N
         jLabel7.setText("Email:");
 
-        txtownerproperty.setBackground(new java.awt.Color(0, 255, 204));
-        txtownerproperty.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 24)); // NOI18N
-        txtownerproperty.setForeground(new java.awt.Color(255, 255, 255));
-        txtownerproperty.setText("Owner Properties");
-        txtownerproperty.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        txtownerproperty.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtownerpropertyActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -263,7 +248,7 @@ public class OwnerTy extends javax.swing.JFrame {
                                         .addComponent(txtfname, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 593, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(11, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(txtadd, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(120, 120, 120)
@@ -273,10 +258,6 @@ public class OwnerTy extends javax.swing.JFrame {
                         .addGap(96, 96, 96)
                         .addComponent(txtrefresh)
                         .addGap(65, 65, 65))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(txtownerproperty, javax.swing.GroupLayout.PREFERRED_SIZE, 422, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(86, 86, 86))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -307,12 +288,10 @@ public class OwnerTy extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(23, 23, 23))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(36, 36, 36))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29)
-                        .addComponent(txtownerproperty, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtrefresh, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -338,115 +317,113 @@ public class OwnerTy extends javax.swing.JFrame {
 
     private void txtaddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtaddActionPerformed
         // Integer id=Integer.valueOf(txtid.getText());
-    String fname=txtfname.getText();
-    String lname=txtlname.getText();
-    String phone=txtphone.getText();
-    String email=txtmail.getText();
-    String address=txtaddress.getText();
-    p_owner owner=new p_owner();
-    
-    if(fname.trim().equals("")||lname.trim().equals("")||phone.trim().equals("")||email.trim().equals("")||address.trim().equals("")){
-         JOptionPane.showMessageDialog(null, "Required Data are empty", "Add Owner", 2);
-    }
-    else{
-    if(owner.AddNewOwner(new p_owner(0,fname,lname,phone,email,address) )){
-        JOptionPane.showMessageDialog(null, "New Owner Added", "Add Owner", 1);
-        // filltablebyower();
-        txtid.setText("");
-        txtfname.setText("");
-        txtlname.setText("");
-        txtmail.setText("");
-        txtphone.setText("");
-        txtaddress.setText("");
-    }else{
-         JOptionPane.showMessageDialog(null, "Invalid Owner Added", "Add Owner", 2);
-    }
-    }
+        String fname=txtfname.getText();
+        String lname=txtlname.getText();
+        String phone=txtphone.getText();
+        String email=txtmail.getText();
+        String address=txtaddress.getText();
+        p_clients client=new p_clients();
+
+        if(fname.trim().equals("")||lname.trim().equals("")||phone.trim().equals("")||email.trim().equals("")||address.trim().equals("")||
+            txtid.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null, "Required Data are empty", "Add client", 2);
+        }
+        else{
+            if(client.AddNewclient(new p_clients(0,fname,lname,phone,email,address) )){
+                JOptionPane.showMessageDialog(null, "New client Added", "Add client", 1);
+                // filltablebyower();
+                txtid.setText("");
+                txtfname.setText("");
+                txtlname.setText("");
+                txtmail.setText("");
+                txtphone.setText("");
+                txtaddress.setText("");
+            }else{
+                JOptionPane.showMessageDialog(null, "Invalid client Added", "Add client", 2);
+            }
+        }
     }//GEN-LAST:event_txtaddActionPerformed
 
     private void txtremoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtremoveActionPerformed
         // TODO add your handling code here:
-        
-           try{
-                int Id=Integer.valueOf(txtid.getText());
-          int yes_no=JOptionPane.showConfirmDialog(null, "Do You Want to Delete This Owner", "Delete Owner", JOptionPane.YES_NO_OPTION);
-           p_owner owner=new p_owner();
-           if(txtid.getText().trim().equals(""))
-           {
-               JOptionPane.showMessageDialog(null,"Fill out correct owner","Empty Owner Id", 2);
-           }
-           else{
-                 
-       
-                    if(yes_no==JOptionPane.YES_OPTION)
+
+        try{
+            int Id=Integer.valueOf(txtid.getText());
+            int yes_no=JOptionPane.showConfirmDialog(null, "Do You Want to Delete This client", "Delete client", JOptionPane.YES_NO_OPTION);
+            p_clients client=new p_clients();
+            if(txtid.getText().trim().equals(""))
+            {
+                JOptionPane.showMessageDialog(null,"Fill out correct client","Empty client Id", 2);
+            }
+            else{
+
+                if(yes_no==JOptionPane.YES_OPTION)
+                {
+                    if(client.deleteNewclients(Id))
                     {
-                        if(owner.deleteNewOwner(Id))
-                        {
-                            JOptionPane.showMessageDialog(null, "Delete Owner Sucessfully ", "Delete Owner", 1);
-                                                         //  filltablebyower();
-                                                          txtid.setText("");
-                                                          txtfname.setText("");
-                                                          txtlname.setText("");
-                                                          txtmail.setText("");
-                                                          txtphone.setText("");
-                                                          txtaddress.setText("");
-                                }
-                        else
-                        {
-                            JOptionPane.showMessageDialog(null, "Invalid Owner ", "Delete Owner", 2);
-                        }
+                        JOptionPane.showMessageDialog(null, "Delete client Sucessfully ", "Delete client", 1);
+                        //  filltablebyower();
+                        txtid.setText("");
+                        txtfname.setText("");
+                        txtlname.setText("");
+                        txtmail.setText("");
+                        txtphone.setText("");
+                        txtaddress.setText("");
                     }
-           }
-    }
-           catch(Exception e)
-        
-       
-       {
-            JOptionPane.showMessageDialog(null, e.getMessage()+"Enter the OwnerId", "Emty Owner", 0);
-       }
+                    else
+                    {
+                        JOptionPane.showMessageDialog(null, "Invalid client ", "Delete client", 2);
+                    }
+                }
+            }
+        }
+        catch(Exception e)
+
+        {
+            JOptionPane.showMessageDialog(null, e.getMessage()+"Enter the clientID", "Emty client", 0);
+        }
     }//GEN-LAST:event_txtremoveActionPerformed
 
     private void txtrefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtrefreshActionPerformed
         // TODO add your handling code here:
-         filltablebyower();
+        filltablebyclients();
     }//GEN-LAST:event_txtrefreshActionPerformed
 
     private void txteditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txteditActionPerformed
-  
-    try{
-          String fname=txtfname.getText();
-    String lname=txtlname.getText();
-    String phone=txtphone.getText();
-    String email=txtmail.getText();
-    String address=txtaddress.getText();
-    int Id=Integer.valueOf(txtid.getText());
-    p_owner owner=new p_owner();
-      
-    if(fname.trim().equals("")||lname.trim().equals("")||phone.trim().equals("")||email.trim().equals("")||address.trim().equals("")||
-       txtid.getText().trim().equals("")){
-         JOptionPane.showMessageDialog(null, "Required Data are empty", "Edit Owner", 2);
-    }
-    else{
-    if(owner.editNewOwner(new p_owner(Id,fname,lname,phone,email,address) )){
-        JOptionPane.showMessageDialog(null, "New Owner information Added", "Edit Owner", 1);
-        // filltablebyower();
-        txtid.setText("");
-        txtfname.setText("");
-        txtlname.setText("");
-        txtmail.setText("");
-        txtphone.setText("");
-        txtaddress.setText("");
-    }else{
-         JOptionPane.showMessageDialog(null, "Invalid Owner information or information aren't changed", "Edit Owner", 2);
-    }
-    }
-    }
-    catch(Exception e)
-        
-       
-       {
-            JOptionPane.showMessageDialog(null, e.getMessage()+"Enter the Owner Id", "Emty owner", 0);
-       }
+
+        try{
+            String fname=txtfname.getText();
+            String lname=txtlname.getText();
+            String phone=txtphone.getText();
+            String email=txtmail.getText();
+            String address=txtaddress.getText();
+            int Id=Integer.valueOf(txtid.getText());
+            p_clients client=new p_clients();
+
+            if(fname.trim().equals("")||lname.trim().equals("")||phone.trim().equals("")||email.trim().equals("")||address.trim().equals("")||
+                txtid.getText().trim().equals("")){
+                JOptionPane.showMessageDialog(null, "Required Data are empty", "Edit client", 2);
+            }
+            else{
+                if(client.editNewclients(new p_clients(Id,fname,lname,phone,email,address) )){
+                    JOptionPane.showMessageDialog(null, "New client information Added", "Edit client", 1);
+                    // filltablebyower();
+                    txtid.setText("");
+                    txtfname.setText("");
+                    txtlname.setText("");
+                    txtmail.setText("");
+                    txtphone.setText("");
+                    txtaddress.setText("");
+                }else{
+                    JOptionPane.showMessageDialog(null, "Invalid client information", "Edit client", 2);
+                }
+            }
+        }
+        catch(Exception e)
+
+        {
+            JOptionPane.showMessageDialog(null, e.getMessage()+"Enter the client Id", "Emty client", 0);
+        }
     }//GEN-LAST:event_txteditActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
@@ -458,28 +435,8 @@ public class OwnerTy extends javax.swing.JFrame {
         txtphone.setText(jTable1.getValueAt(selectrowindex,3).toString());
         txtmail.setText(jTable1.getValueAt(selectrowindex,4).toString());
         txtaddress.setText(jTable1.getValueAt(selectrowindex,5).toString());
-        
-        
-    }//GEN-LAST:event_jTable1MouseClicked
 
-    private void txtownerpropertyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtownerpropertyActionPerformed
-        // TODO add your handling code here:
-        
-        try{
-                
-                 int selectrowindex=jTable1.getSelectedRow();
-                  int id=Integer.valueOf(jTable1.getValueAt(selectrowindex,0).toString());
-                  owner_property_once propertyapp=new owner_property_once(id);
-                 //  propertyapp.ownerid=id;
-                   propertyapp.setVisible(true);
-                    propertyapp.pack();
-                    propertyapp.setLocationRelativeTo(null);
-                    propertyapp.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        }catch(Exception ex){
-            JOptionPane.showMessageDialog(null, "Select the owner id ", "empty Select", 2);
-        }
-                   
-    }//GEN-LAST:event_txtownerpropertyActionPerformed
+    }//GEN-LAST:event_jTable1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -498,20 +455,20 @@ public class OwnerTy extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(OwnerTy.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ClientsTy.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(OwnerTy.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ClientsTy.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(OwnerTy.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ClientsTy.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(OwnerTy.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ClientsTy.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new OwnerTy().setVisible(true);
+                new ClientsTy().setVisible(true);
             }
         });
     }
@@ -536,7 +493,6 @@ public class OwnerTy extends javax.swing.JFrame {
     private javax.swing.JTextField txtid;
     private javax.swing.JTextField txtlname;
     private javax.swing.JTextField txtmail;
-    private javax.swing.JButton txtownerproperty;
     private javax.swing.JTextField txtphone;
     private javax.swing.JButton txtrefresh;
     private javax.swing.JButton txtremove;

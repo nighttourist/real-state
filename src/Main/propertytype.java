@@ -189,13 +189,15 @@ public class propertytype extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtremove)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(txtadd, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(76, 76, 76)
+                        .addComponent(txtremove))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4)
-                            .addComponent(jLabel2)
-                            .addComponent(txtadd, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtid, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -203,15 +205,15 @@ public class propertytype extends javax.swing.JFrame {
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE))))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 104, Short.MAX_VALUE)
-                        .addComponent(txtedit, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(109, 109, 109)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtedit, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(85, 85, 85)
                         .addComponent(txtrefresh)
                         .addGap(45, 45, 45))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(69, 69, 69)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(26, Short.MAX_VALUE))))
+                        .addContainerGap(28, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -257,6 +259,7 @@ public class propertytype extends javax.swing.JFrame {
 
     private void txtrefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtrefreshActionPerformed
         // TODO add your handling code here:
+         filltype();
     }//GEN-LAST:event_txtrefreshActionPerformed
 
     private void txtaddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtaddActionPerformed
@@ -268,7 +271,7 @@ public class propertytype extends javax.swing.JFrame {
        if(!name.trim().equals("")){
            if(type.execTypeQuery("add",type)){
           JOptionPane.showMessageDialog(null, "New Type added", "Add type", 1);
-          filltype();
+         // filltype();
           txtid.setText("");
           txtname.setText("");
           txtdiscription.setText("");
@@ -296,7 +299,7 @@ public class propertytype extends javax.swing.JFrame {
        if(!txtid.getText().trim().equals("")){
            if(type.execTypeQuery("remove",type)){
           JOptionPane.showMessageDialog(null, "Type Removed", "Delete type", 1);
-          filltype();
+         // filltype();
           txtid.setText("");
           txtname.setText("");
           txtdiscription.setText("");
@@ -330,7 +333,7 @@ public class propertytype extends javax.swing.JFrame {
        if(!name.trim().equals("")){
            if(type.execTypeQuery("edit",type)){
           JOptionPane.showMessageDialog(null, " Type Updated", "Edit type", 1);
-          filltype();
+        //  filltype();
           txtid.setText("");
           txtname.setText("");
           txtdiscription.setText("");
